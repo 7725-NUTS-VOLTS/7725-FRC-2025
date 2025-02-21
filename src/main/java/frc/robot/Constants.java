@@ -93,7 +93,7 @@ public final class Constants {
             public static final int driveMotorID = 4;
             public static final int angleMotorID = 1;
             public static final int canCoderID = 12;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(66.171875+180.0); //61.171875
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(60.171875+180.0); //61.171875
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -113,7 +113,7 @@ public final class Constants {
             public static final int driveMotorID = 5; 
             public static final int angleMotorID = 3;
             public static final int canCoderID = 9;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(-70.001465);
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(-75.001465);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -143,5 +143,25 @@ public final class Constants {
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    }
+    public static final class RollerConstants{
+        public static final int ROLLER_MOTOR_ID = 30;
+        public static final int ROLLER_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double ROLLER_EJECT_VALUE = 0.22;
+        public static final double ROLLER_MOTOR_VOLTAGE_COMP = 10;
+    }
+
+    public static final class PelotaConstants{
+        public static final int PELOTA_MOTOR_ID = 32;
+        public static final int PELOTA_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double PELOTA_SPIN_VALUE = 0.44;
+        public static final double PELOTA_MOTOR_VOLTAGE_COMP = 10;
+    }
+    public static final class BrazoConstants{
+        public static final int BRAZO_MOTOR_ID =25;
+        public static final int BRAZO_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double BRAZO_LOWER_VALUE = 0.25;
+        public static final double BRAZO_RISE_VALUE = 0.25;
+        public static final double BRAZO_MOTOR_VOLTAGE_COMP = 10;
     }
 }
