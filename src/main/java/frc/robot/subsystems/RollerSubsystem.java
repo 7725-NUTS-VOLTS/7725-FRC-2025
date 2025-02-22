@@ -8,7 +8,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import frc.robot.Constants.RollerConstants;
 
 import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkLowLevel;
+//import com.revrobotics.spark.SparkLowLevel;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class RollerSubsystem extends SubsystemBase {

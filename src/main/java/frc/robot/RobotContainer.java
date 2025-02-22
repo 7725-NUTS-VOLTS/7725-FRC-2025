@@ -13,7 +13,7 @@ import frc.robot.Constants.PelotaConstants;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
-import com.revrobotics.RelativeEncoder;
+//import com.revrobotics.RelativeEncoder;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
@@ -24,7 +24,7 @@ import com.pathplanner.lib.auto.NamedCommands;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private RelativeEncoder encoder;
+    //private RelativeEncoder encoder;
     /* Controllers */
     private final Joystick driver = new Joystick(0);
     private final Joystick opperator = new Joystick(1);
