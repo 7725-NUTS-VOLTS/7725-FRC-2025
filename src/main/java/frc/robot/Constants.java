@@ -3,7 +3,10 @@ package frc.robot;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
+import com.pathplanner.lib.config.PIDConstants;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
+import edu.wpi.first.math.controller.HolonomicDriveController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -93,7 +96,7 @@ public final class Constants {
             public static final int driveMotorID = 4;
             public static final int angleMotorID = 1;
             public static final int canCoderID = 12;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(66.171875+180.0); //61.171875
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(60.171875+180.0); //61.171875
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -123,10 +126,13 @@ public final class Constants {
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 10;    
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(50.005859);
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(45.005859);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
+        public static final PPHolonomicDriveController pathFollowerConfig = new PPHolonomicDriveController(
+             new PIDConstants(5, 0, 0), 
+            new PIDConstants(5, 0, 0));
     }
 
     public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
@@ -143,5 +149,25 @@ public final class Constants {
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    }
+    public static final class RollerConstants{
+        public static final int ROLLER_MOTOR_ID = 30;
+        public static final int ROLLER_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double ROLLER_EJECT_VALUE = 0.22;
+        public static final double ROLLER_MOTOR_VOLTAGE_COMP = 10;
+    }
+
+    public static final class PelotaConstants{
+        public static final int PELOTA_MOTOR_ID = 32;
+        public static final int PELOTA_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double PELOTA_SPIN_VALUE = 1;
+        public static final double PELOTA_MOTOR_VOLTAGE_COMP = 10;
+    }
+    public static final class BrazoConstants{
+        public static final int BRAZO_MOTOR_ID =25;
+        public static final int BRAZO_MOTOR_CURRENT_LIMIT = 60; 
+        public static final double BRAZO_LOWER_VALUE = 0.25;
+        public static final double BRAZO_RISE_VALUE = 0.25;
+        public static final double BRAZO_MOTOR_VOLTAGE_COMP = 10;
     }
 }
