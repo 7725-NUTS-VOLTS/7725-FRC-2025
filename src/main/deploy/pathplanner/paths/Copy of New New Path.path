@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.581907894736841,
-        "y": 4.044243421052631
+        "x": 7.639638157894736,
+        "y": 3.9095394736842106
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.2922756075444575,
-        "y": 4.044243421052631
+        "x": 6.639638157894732,
+        "y": 3.9095394736842106
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.609457236842105,
-        "y": 4.044243421052631
+        "x": 6.918009868421052,
+        "y": 6.016694078947369
       },
       "prevControl": {
-        "x": 5.894131533361625,
-        "y": 4.044243421052631
+        "x": 7.2422907289746075,
+        "y": 5.14625597956677
+      },
+      "nextControl": {
+        "x": 6.186759868421052,
+        "y": 7.979523026315787
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.243832236842105,
+        "y": 5.4875
+      },
+      "prevControl": {
+        "x": 5.888486842105268,
+        "y": 6.026315789473684
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +50,7 @@
   "eventMarkers": [
     {
       "name": "DropCoral",
-      "waypointRelativePos": 0.5,
+      "waypointRelativePos": 2.0,
       "endWaypointRelativePos": null,
       "command": null
     }
@@ -49,13 +65,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -119.05460409907721
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 179.36340642403655
   },
   "useDefaultConstraints": true
 }
