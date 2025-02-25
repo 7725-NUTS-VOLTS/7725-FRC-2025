@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -67,12 +68,12 @@ public class RobotContainer {
     public RobotContainer() {
         NamedCommands.registerCommand("DropCoral", new RollerCommand(()-> 0, ()-> RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem).withTimeout(2));
         //m_chooser.addOption("Basic Auto", new basicAuto(s_Swerve));
-        m_chooser.addOption("Nothing", new InstantCommand());
-        SmartDashboard.putData(m_chooser);
-        SmartDashboard.putNumber("SpeedLimit", 1);
+        //m_chooser.addOption("Nothing", new InstantCommand());
+        //SmartDashboard.putData(m_chooser);
+        //SmartDashboard.putNumber("SpeedLimit", 1);
 
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("Auto Chooser", autoChooser);
+        //autoChooser = AutoBuilder.buildAutoChooser();
+        //SmartDashboard.putData("Auto Chooser", autoChooser);
 
 
         s_Swerve.setDefaultCommand(
@@ -91,6 +92,8 @@ public class RobotContainer {
 
         // Configure the button bindings
         configureButtonBindings();
+        autoChooser  = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Mode", autoChooser);
     }
 
     /**
