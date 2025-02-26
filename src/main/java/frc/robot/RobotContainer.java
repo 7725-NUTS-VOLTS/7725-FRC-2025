@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -17,6 +17,7 @@ import frc.robot.subsystems.*;
 //import com.revrobotics.RelativeEncoder;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.util.PathPlannerLogging;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -60,21 +61,18 @@ public class RobotContainer {
     private final PelotaSubsystem pelotaSubsystem = new PelotaSubsystem();
     private final BrazoSubsystem brazoSubsystem = new BrazoSubsystem();
 
-    private SendableChooser<Command> m_chooser = new SendableChooser<>();
+    /*Auto Selector on Dashboard*/
     private SendableChooser<Command> autoChooser;
+
+    /*Field Visualization on Dashboard*/
+    private final Field2d field;
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
         NamedCommands.registerCommand("DropCoral", new RollerCommand(()-> 0, ()-> RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem).withTimeout(2));
-        //m_chooser.addOption("Basic Auto", new basicAuto(s_Swerve));
-        //m_chooser.addOption("Nothing", new InstantCommand());
-        //SmartDashboard.putData(m_chooser);
-        //SmartDashboard.putNumber("SpeedLimit", 1);
-
-        //autoChooser = AutoBuilder.buildAutoChooser();
-        //SmartDashboard.putData("Auto Chooser", autoChooser);
-
+        field = new Field2d();
+        SmartDashboard.putData("Field", field);
 
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
@@ -85,6 +83,18 @@ public class RobotContainer {
                 () -> robotCentric.getAsBoolean()
             )
         );
+
+        PathPlannerLogging.setLogCurrentPoseCallback((pose)->{
+            field.setRobotPose(pose);
+        });
+
+        PathPlannerLogging.setLogTargetPoseCallback((pose)->{
+            field.getObject("target pose").setPose(pose);
+        });
+
+        PathPlannerLogging.setLogActivePathCallback((poses)->{
+            field.getObject("path").setPoses(poses);
+        });
 
         //* driver.getRawAxis(speedAxis) * SmartDashboard.getNumber("SpeedLimit", 1)
         //* driver.getRawAxis(speedAxis) * SmartDashboard.getNumber("SpeedLimit", 1)
