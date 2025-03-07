@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.BrazoConstants;
 import frc.robot.Constants.PelotaConstants;
@@ -120,7 +121,7 @@ public class RobotContainer {
         retractCoral.whileTrue(new RollerCommand(()->RollerConstants.ROLLER_EJECT_VALUE, ()->0, rollerSubsystem));
         catchAlgae.whileTrue(new PelotaCommand(()->PelotaConstants.PELOTA_SPIN_VALUE, ()->0, pelotaSubsystem));
         spitAlgae.whileTrue(new PelotaCommand(()->0, ()->PelotaConstants.PELOTA_SPIN_VALUE, pelotaSubsystem));
-        bajarBrazo.whileTrue(new BrazoCommand(()->0,()->BrazoConstants.BRAZO_LOWER_VALUE , brazoSubsystem));
+        bajarBrazo.whileTrue(new ParallelCommandGroup(new BrazoCommand(()->0,()->BrazoConstants.BRAZO_LOWER_VALUE , brazoSubsystem), new PelotaCommand(()->0.50, ()->0.00, pelotaSubsystem)));
         subirBrazo.whileTrue(new BrazoCommand(()->BrazoConstants.BRAZO_RISE_VALUE,()->0 , brazoSubsystem));
     }   
 
