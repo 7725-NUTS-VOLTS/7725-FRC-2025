@@ -153,7 +153,7 @@ public final class Constants {
     public static final class RollerConstants{
         public static final int ROLLER_MOTOR_ID = 30;
         public static final int ROLLER_MOTOR_CURRENT_LIMIT = 60; 
-        public static final double ROLLER_EJECT_VALUE = 0.22;
+        public static final double ROLLER_EJECT_VALUE = 0.15;
         public static final double ROLLER_MOTOR_VOLTAGE_COMP = 10;
     }
 
@@ -169,5 +169,10 @@ public final class Constants {
         public static final double BRAZO_LOWER_VALUE = 0.25;
         public static final double BRAZO_RISE_VALUE = 0.25;
         public static final double BRAZO_MOTOR_VOLTAGE_COMP = 10;
+    }
+    public static final class NeumaticaConstants{
+        public static final int NEUMATIC_CONTROLLER_ID = 15;
+        public static final int VALVE_COTROLLER_ID = 17;
+        public static final int VALVE2_COTROLLER_ID = 19;
     }
 }
