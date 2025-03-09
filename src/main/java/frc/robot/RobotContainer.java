@@ -53,7 +53,6 @@ public class RobotContainer {
     private final JoystickButton spitAlgae = new JoystickButton(opperator, XboxController.Button.kB.value);
     private final JoystickButton bajarBrazo = new JoystickButton(opperator, XboxController.Button.kRightBumper.value);
     private final JoystickButton subirBrazo = new JoystickButton(opperator, XboxController.Button.kLeftBumper.value);
-
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final RollerSubsystem rollerSubsystem = new RollerSubsystem();
@@ -125,7 +124,7 @@ public class RobotContainer {
         subirBrazo.whileTrue(new BrazoCommand(()->BrazoConstants.BRAZO_RISE_VALUE,()->0 , brazoSubsystem));
     }   
 
-    /**
+    /*
      * Use this to pass the autonomous command to the main {@link Robot} class.
      *
      * @return the command to run in autonomous

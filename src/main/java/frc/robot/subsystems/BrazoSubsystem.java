@@ -36,6 +36,9 @@ public class BrazoSubsystem extends SubsystemBase{
     }
 
     public void runBrazo (double lower, double rise){
+        if (bMotor.getAbsoluteEncoder().getPosition() != -50){
         bMotor.set(rise-lower);
+        }
+
     }
 }

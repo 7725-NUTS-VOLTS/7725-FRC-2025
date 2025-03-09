@@ -158,7 +158,7 @@ public final class Constants {
     public static final class PelotaConstants{
         public static final int PELOTA_MOTOR_ID = 32;
         public static final int PELOTA_MOTOR_CURRENT_LIMIT = 60; 
-        public static final double PELOTA_SPIN_VALUE = 1;
+        public static final double PELOTA_SPIN_VALUE = 0.5;
         public static final double PELOTA_MOTOR_VOLTAGE_COMP = 10;
     }
     public static final class BrazoConstants{
@@ -167,10 +167,5 @@ public final class Constants {
         public static final double BRAZO_LOWER_VALUE = 0.25;
         public static final double BRAZO_RISE_VALUE = 0.25;
         public static final double BRAZO_MOTOR_VOLTAGE_COMP = 10;
-    }
-    public static final class NeumaticaConstants{
-        public static final int NEUMATIC_CONTROLLER_ID = 15;
-        public static final int VALVE_COTROLLER_ID = 17;
-        public static final int VALVE2_COTROLLER_ID = 19;
     }
 }
