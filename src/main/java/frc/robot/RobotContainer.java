@@ -55,9 +55,7 @@ public class RobotContainer {
     private final JoystickButton subirBrazo = new JoystickButton(opperator, XboxController.Button.kLeftBumper.value);
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
-    private final RollerSubsystem rollerSubsystem = new RollerSubsystem();
-    private final PelotaSubsystem pelotaSubsystem = new PelotaSubsystem();
-    private final BrazoSubsystem brazoSubsystem = new BrazoSubsystem();
+   
 
     /*Auto Selector on Dashboard*/
     private SendableChooser<Command> autoChooser;
@@ -68,7 +66,6 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-        NamedCommands.registerCommand("DropCoral", new RollerCommand(()-> 0, ()-> RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem).withTimeout(2));
         field = new Field2d();
         SmartDashboard.putData("Field", field);
 
@@ -114,15 +111,10 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro1.and(zeroGyro2).onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         resetWheels.onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
+    }
 
         /* Operator Buttons */
-        ejectCoral.whileTrue(new RollerCommand(()->0, ()->RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem));
-        retractCoral.whileTrue(new RollerCommand(()->RollerConstants.ROLLER_EJECT_VALUE, ()->0, rollerSubsystem));
-        catchAlgae.whileTrue(new PelotaCommand(()->PelotaConstants.PELOTA_SPIN_VALUE, ()->0, pelotaSubsystem));
-        spitAlgae.whileTrue(new PelotaCommand(()->0, ()->PelotaConstants.PELOTA_SPIN_VALUE, pelotaSubsystem));
-        bajarBrazo.whileTrue(new ParallelCommandGroup(new BrazoCommand(()->0,()->BrazoConstants.BRAZO_LOWER_VALUE , brazoSubsystem), new PelotaCommand(()->0.50, ()->0.00, pelotaSubsystem)));
-        subirBrazo.whileTrue(new BrazoCommand(()->BrazoConstants.BRAZO_RISE_VALUE,()->0 , brazoSubsystem));
-    }   
+     
 
     /*
      * Use this to pass the autonomous command to the main {@link Robot} class.
