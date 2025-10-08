@@ -47,12 +47,9 @@ public class RobotContainer {
         new JoystickButton(driver, XboxController.Button.kA.value);
 
     /*Opperator buttons */
-    private final JoystickButton ejectCoral = new JoystickButton(opperator, XboxController.Button.kA.value);
-    private final JoystickButton retractCoral = new JoystickButton(opperator, XboxController.Button.kY.value);
-    private final JoystickButton catchAlgae = new JoystickButton(opperator, XboxController.Button.kX.value);
-    private final JoystickButton spitAlgae = new JoystickButton(opperator, XboxController.Button.kB.value);
-    private final JoystickButton bajarBrazo = new JoystickButton(opperator, XboxController.Button.kRightBumper.value);
-    private final JoystickButton subirBrazo = new JoystickButton(opperator, XboxController.Button.kLeftBumper.value);
+    
+    // example: private final JoystickButton nombreAccion = new JoystickButton(opperator, XboxController.Button.k{nombreButton}.value)
+    
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
    
