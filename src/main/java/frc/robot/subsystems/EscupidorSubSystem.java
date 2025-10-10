@@ -33,8 +33,8 @@ public class EscupidorSubSystem extends SubsystemBase {
 
     }
     public void runRoller(double forward, double reverse){
-rMotor.set(reverse);
-fMotor.set(forward);
+        rMotor.set(reverse);
+        fMotor.set(forward);
 
 
     }
