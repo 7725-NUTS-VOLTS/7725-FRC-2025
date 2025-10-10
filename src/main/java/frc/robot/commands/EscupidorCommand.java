@@ -7,10 +7,10 @@ public class EscupidorCommand extends Command {
     private final DoubleSupplier  forward;
     private final DoubleSupplier reverse;
     private final EscupidorSubSystem EscupidorSubsystem;
-    public EscupidorCommand(DoubleSupplier forward, DoubleSupplier reverse, EscupidorSubSystem esccupidorSubSystem){
+    public EscupidorCommand(DoubleSupplier forward, DoubleSupplier reverse, EscupidorSubSystem escupidorSubSystem){
         this.forward = forward;
         this.reverse = reverse;
-        this.EscupidorSubsystem = esccupidorSubSystem;
+        this.EscupidorSubsystem = escupidorSubSystem;
         addRequirements(this.EscupidorSubsystem);
     }
     @Override 
