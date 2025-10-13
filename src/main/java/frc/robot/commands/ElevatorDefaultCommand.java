@@ -10,12 +10,11 @@ public class ElevatorDefaultCommand extends Command {
     private ElevatorSubsystem elevator;
     private double power;
 
-    private final TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints( 
-        0, 0);
+    private final TrapezoidProfile.Constraints m_Constraints = new TrapezoidProfile.Constraints(0, 0);
 
-        private final ProfiledPIDController pidController = new ProfiledPIDController(0, 0, 0, m_Constraints);
+    private final ProfiledPIDController pidController = new ProfiledPIDController(0, 0, 0, m_Constraints);
 
-        ElevatorFeedforward = new ElevatorFeedForward(0, 0, 0);
+    ElevatorFeedforward elevatorFeedforward= new ElevatorFeedforward(0, 0, 0);
 
     public ElevatorDefaultCommand() {
         elevator = ElevatorSubsystem.getInstance();
@@ -31,7 +30,7 @@ public class ElevatorDefaultCommand extends Command {
 
     @Override
     public void execute() {
-        power = pidController.calculate(elevator.getPose(),elevator.getDefaultCommand())
+        power = pidController.calculate(elevator.getPose(), ElevatorSubsystem.getDefaultPose())
         + elevatorFeedforward.calculate(pidController.getSetpoint().velocity);
 
         if(pidController.getPositionError() < 0 && power < -0.4){
