@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.BrazoConstants;
-import frc.robot.Constants.PelotaConstants;
+import frc.robot.Constants.ElevaotrConstants;
 import frc.robot.Constants.EscupidorConstants;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -50,9 +50,13 @@ public class RobotContainer {
     
     // example: private final JoystickButton nombreAccion = new JoystickButton(opperator, XboxController.Button.k{nombreButton}.value)
     
+    private final JoystickButton ejectCoral = new JoystickButton(opperator, XboxController.Button.kA.value);
+    private final JoystickButton retractCoral = new JoystickButton(opperator, XboxController.Button.kY.value);
+
+    
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
-   
+   private final EscupidorSubSystem escupidorSubSystem = new EscupidorSubSystem();
 
     /*Auto Selector on Dashboard*/
     private SendableChooser<Command> autoChooser;
@@ -108,9 +112,11 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro1.and(zeroGyro2).onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         resetWheels.onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
+        /* Operator Buttons */
+
     }
 
-        /* Operator Buttons */
+        
      
 
     /*
