@@ -67,6 +67,7 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
+        NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         field = new Field2d();
         SmartDashboard.putData("Field", field);
 
@@ -113,6 +114,8 @@ public class RobotContainer {
         zeroGyro1.and(zeroGyro2).onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         resetWheels.onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         /* Operator Buttons */
+        ejectCoral.whileTrue(new EscupidorCommand(()->EscupidorConstants.ROLLER_EJECT_VALUE, ()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem)); 
+        retractCoral.whileTrue(new EscupidorCommand(()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, ()->EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem));
 
     }
 
