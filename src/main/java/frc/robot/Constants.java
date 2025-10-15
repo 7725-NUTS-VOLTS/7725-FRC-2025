@@ -163,6 +163,39 @@ public final class Constants {
         public static final double PELOTA_SPIN_VALUE = 0.5;
         public static final double PELOTA_MOTOR_VOLTAGE_COMP = 10;
     }
+
+    public static final class ElevaotrConstants{
+
+
+public static final int ELEVATOR_MASTER_MOTOR_ID = 30;
+
+
+public static final int ELEVATOR_FOLLOW_MOTOR_ID = 28;
+
+
+public static final double ELEVATOR_P = 0.15;
+
+
+ public static final double ELEVATOR_I = 0.0;
+
+
+public static final double ELEVATOR_D = 0.005;
+
+
+public static final double ELEVATOR_MAX_ACCELLERATION = 5000;
+
+
+public static final double ELEVATOR_MAX_VELO = 3000;
+
+
+public static final double ELEVATOR_POSITION_TOLERANCE = 0.2;
+public static final int ELEVATOR_CURRENT_LIMIT = 40;
+public static final int ELEVATOR_ROLLER_RAIDUS = 1;
+public static final int ELEVATOR_CONVERSION_FACTOR = 12;
+public static final Boolean Elevator_INVERTED = true;
+}
+
+
     public static final class BrazoConstants{
         public static final int BRAZO_MOTOR_ID =25;
         public static final int BRAZO_MOTOR_CURRENT_LIMIT = 60; 
