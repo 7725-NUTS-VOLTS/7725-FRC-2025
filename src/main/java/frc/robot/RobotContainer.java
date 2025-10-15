@@ -68,7 +68,7 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-        NamedCommands.registerCommand("DropCoral", new RollerCommand(()-> 0, ()-> RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem).withTimeout(2));
+      //  NamedCommands.registerCommand("DropCoral", new RollerCommand(()-> 0, ()-> RollerConstants.ROLLER_EJECT_VALUE, rollerSubsystem).withTimeout(2));
         field = new Field2d();
         SmartDashboard.putData("Field", field);
 
