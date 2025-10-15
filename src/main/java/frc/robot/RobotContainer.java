@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -67,7 +68,10 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-        NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
+        
+
+      //  NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
+        //NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         field = new Field2d();
         SmartDashboard.putData("Field", field);
 
@@ -97,6 +101,8 @@ public class RobotContainer {
         //* driver.getRawAxis(speedAxis) * SmartDashboard.getNumber("SpeedLimit", 1)
         //* SmartDashboard.getNumber("SpeedLimit", 1) * 0.60
 
+        NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
+        NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         // Configure the button bindings
         configureButtonBindings();
         autoChooser  = AutoBuilder.buildAutoChooser();
