@@ -20,6 +20,7 @@ import frc.robot.subsystems.*;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.util.PathPlannerLogging;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -54,11 +55,14 @@ public class RobotContainer {
     
     private final JoystickButton ejectCoral = new JoystickButton(opperator, XboxController.Button.kA.value);
     private final JoystickButton retractCoral = new JoystickButton(opperator, XboxController.Button.kY.value);
+    Trigger dpadUp = new Trigger(() -> opperator.getPOV() == 0);
+    Trigger dpadDown = new Trigger(() -> opperator.getPOV() == 180);
 
     
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
-   private final EscupidorSubSystem escupidorSubSystem = new EscupidorSubSystem();
+    private final EscupidorSubSystem escupidorSubSystem = new EscupidorSubSystem();
+    private final ElevatorSubsystem elevator = ElevatorSubsystem.getInstance();
 
     /*Auto Selector on Dashboard*/
     private SendableChooser<Command> autoChooser;
@@ -73,6 +77,7 @@ public class RobotContainer {
 
       //  NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
         //NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
+        elevator.setDefaultCommand(new ElevatorDefaultCommand());
         field = new Field2d();
         SmartDashboard.putData("Field", field);
 
@@ -123,7 +128,8 @@ public class RobotContainer {
         /* Operator Buttons */
         ejectCoral.whileTrue(new EscupidorCommand(()->EscupidorConstants.ROLLER_EJECT_VALUE, ()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem)); 
         retractCoral.whileTrue(new EscupidorCommand(()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, ()->EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem));
-
+        dpadUp.whileTrue(new ElevatorMove(0.3));   // Move elevator up
+        dpadDown.whileTrue(new ElevatorMove(-0.3)); // Move elevator down
     }
 
         
