@@ -20,7 +20,7 @@ public class ElevatorDefaultCommand extends Command {
     public ElevatorDefaultCommand() {
         elevator = ElevatorSubsystem.getInstance();
         this.power = 0;
-        addRequirements();
+        addRequirements(elevator);
 
         pidController.setTolerance(ElevaotrConstants.ELEVATOR_POSITION_TOLERANCE);
     }
