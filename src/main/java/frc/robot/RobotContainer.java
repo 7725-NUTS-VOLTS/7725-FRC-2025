@@ -102,7 +102,7 @@ public class RobotContainer {
         //* SmartDashboard.getNumber("SpeedLimit", 1) * 0.60
 
         NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
-        NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
+        NamedCommands.registerCommand("DropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         // Configure the button bindings
         configureButtonBindings();
         autoChooser  = AutoBuilder.buildAutoChooser();
