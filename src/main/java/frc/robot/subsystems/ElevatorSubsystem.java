@@ -8,6 +8,7 @@ import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
@@ -21,6 +22,7 @@ import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ElevaotrConstants;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 
 
@@ -35,8 +37,8 @@ public class ElevatorSubsystem extends SubsystemBase {
     private static double defaultPose = 0;
 
     private ElevatorSubsystem(){
-        masterMotor = new SparkMax(0, null); // ADD MOTORID 28
-        followerMotor = new SparkMax(0, null); // ADD MOTORID
+        masterMotor = new SparkMax(ElevaotrConstants.ELEVATOR_MASTER_MOTOR_ID, MotorType.kBrushless) ; // ADD MOTORID 28
+        followerMotor = new SparkMax(ElevaotrConstants.ELEVATOR_FOLLOW_MOTOR_ID, MotorType.kBrushless); // ADD MOTORID
 
         closedLoopController = masterMotor.getClosedLoopController();
 
@@ -46,28 +48,28 @@ public class ElevatorSubsystem extends SubsystemBase {
         masterMotorConfig.idleMode(IdleMode.kCoast);
         followerMotorConfig.idleMode(IdleMode.kCoast);
 
-        masterMotorConfig.smartCurrentLimit(0); //ADD CONSTANTS
-        followerMotorConfig.smartCurrentLimit(0); //ADD CONSTANTS
+        masterMotorConfig.smartCurrentLimit(ElevaotrConstants.ELEVATOR_CURRENT_LIMIT); //ADD CONSTANTS
+        followerMotorConfig.smartCurrentLimit(ElevaotrConstants.ELEVATOR_CURRENT_LIMIT); //ADD CONSTANTS
 
         masterMotorConfig.encoder
             .positionConversionFactor(
-                2* Math.PI * 0/0 )
+                2* Math.PI * ElevaotrConstants.ELEVATOR_ROLLER_RAIDUS/ElevaotrConstants.ELEVATOR_CONVERSION_FACTOR)
             .velocityConversionFactor(
-                2*Math.PI* 0/0);
+                2*Math.PI * ElevaotrConstants.ELEVATOR_ROLLER_RAIDUS/ElevaotrConstants.ELEVATOR_CONVERSION_FACTOR);
 
         masterMotorConfig.closedLoop
             .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-            .p(0) //ADD CONSTANTS
-            .i(0) // ADD CONSTANTS
-            .d(0); //ADD CONSTANTS
+            .p(ElevaotrConstants.ELEVATOR_P) //ADD CONSTANTS
+            .i(ElevaotrConstants.ELEVATOR_I) // ADD CONSTANTS
+            .d(ElevaotrConstants.ELEVATOR_D); //ADD CONSTANTS
 
         masterMotorConfig.closedLoop.maxMotion
-            .maxVelocity(0) //ADD CONSTANTS
-            .maxAcceleration(0) //ADD CONSTANTS
-            .allowedClosedLoopError(0); //ADD CONSTANTS
+            .maxVelocity(ElevaotrConstants.ELEVATOR_MAX_VELO) //ADD CONSTANTS
+            .maxAcceleration(ElevaotrConstants.ELEVATOR_MAX_ACCELLERATION) //ADD CONSTANTS
+            .allowedClosedLoopError(ElevaotrConstants.ELEVATOR_POSITION_TOLERANCE); //ADD CONSTANTS
 
-        masterMotorConfig.inverted(false); //ADD CONSTANTS
-        followerMotorConfig.inverted(!false); //ADD CONSTANTS
+        masterMotorConfig.inverted(ElevaotrConstants.Elevator_INVERTED); //ADD CONSTANTS
+        followerMotorConfig.inverted(ElevaotrConstants.Elevator_INVERTED); //ADD CONSTANTS
 
         masterMotor.configure(masterMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         followerMotorConfig.follow(masterMotor, true);
@@ -112,7 +114,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
 
     public boolean isInPoint(double point){
-        return(Math.abs(encoder.getPosition()-point) <= 0); //ADD CONSTANTS
+        return(Math.abs(encoder.getPosition()-point) <= ElevaotrConstants.ELEVATOR_POSITION_TOLERANCE); //ADD CONSTANTS
     }
 
     public double getPose(){

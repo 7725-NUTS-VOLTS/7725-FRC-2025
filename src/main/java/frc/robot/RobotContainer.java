@@ -101,7 +101,7 @@ public class RobotContainer {
         //* driver.getRawAxis(speedAxis) * SmartDashboard.getNumber("SpeedLimit", 1)
         //* SmartDashboard.getNumber("SpeedLimit", 1) * 0.60
 
-        NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
+        NamedCommands.registerCommand("Wait2", new WaitCommand(4.0));
         NamedCommands.registerCommand("DropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         // Configure the button bindings
         configureButtonBindings();
