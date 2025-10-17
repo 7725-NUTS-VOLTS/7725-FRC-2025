@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.BrazoConstants;
 import frc.robot.Constants.ElevaotrConstants;
@@ -106,7 +107,7 @@ public class RobotContainer {
         //* driver.getRawAxis(speedAxis) * SmartDashboard.getNumber("SpeedLimit", 1)
         //* SmartDashboard.getNumber("SpeedLimit", 1) * 0.60
 
-        NamedCommands.registerCommand("Wait2", new WaitCommand(4.0));
+        NamedCommands.registerCommand("Wait2", new SequentialCommandGroup(new WaitCommand(2.0)));
         NamedCommands.registerCommand("DropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
         // Configure the button bindings
         configureButtonBindings();
