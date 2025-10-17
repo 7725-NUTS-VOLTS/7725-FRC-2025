@@ -62,7 +62,7 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final EscupidorSubSystem escupidorSubSystem = new EscupidorSubSystem();
-    private final ElevatorSubsystem elevator = ElevatorSubsystem.getInstance();
+    private ElevatorSubsystem elevator;
 
     /*Auto Selector on Dashboard*/
     private SendableChooser<Command> autoChooser;
@@ -77,6 +77,7 @@ public class RobotContainer {
 
       //  NamedCommands.registerCommand("Wait2", new WaitCommand(2.0));
         //NamedCommands.registerCommand("dropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
+        elevator = ElevatorSubsystem.getInstance();
         elevator.setDefaultCommand(new ElevatorDefaultCommand());
         field = new Field2d();
         SmartDashboard.putData("Field", field);

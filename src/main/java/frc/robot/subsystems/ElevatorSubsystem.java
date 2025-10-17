@@ -27,7 +27,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 
 
 public class ElevatorSubsystem extends SubsystemBase {
-    private static ElevatorSubsystem instance = new ElevatorSubsystem();
+    private static ElevatorSubsystem instance = null;
 
     private SparkMax masterMotor, followerMotor;
     private SparkMaxConfig masterMotorConfig, followerMotorConfig;
