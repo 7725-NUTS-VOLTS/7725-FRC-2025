@@ -69,7 +69,7 @@ public class ElevatorSubsystem extends SubsystemBase {
             .allowedClosedLoopError(ElevaotrConstants.ELEVATOR_POSITION_TOLERANCE); //ADD CONSTANTS
 
         masterMotorConfig.inverted(ElevaotrConstants.Elevator_INVERTED); //ADD CONSTANTS
-        followerMotorConfig.inverted(ElevaotrConstants.Elevator_INVERTED); //ADD CONSTANTS
+        //followerMotorConfig.inverted(ElevaotrConstants.Elevator_INVERTED); //ADD CONSTANTS
 
         masterMotor.configure(masterMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         followerMotorConfig.follow(masterMotor, true);
