@@ -129,8 +129,8 @@ public class RobotContainer {
         /* Operator Buttons */
         ejectCoral.whileTrue(new EscupidorCommand(()->EscupidorConstants.ROLLER_EJECT_VALUE, ()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem)); 
         retractCoral.whileTrue(new EscupidorCommand(()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, ()->EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem));
-        dpadUp.whileTrue(new ElevatorMove(0.3));   // Move elevator up
-        dpadDown.whileTrue(new ElevatorMove(-0.3)); // Move elevator down
+        dpadUp.whileTrue(new ElevatorMove(0.21,opperator));   // Move elevator up
+        dpadDown.whileTrue(new ElevatorMove(-0.21, opperator)); // Move elevator down
     }
 
         
