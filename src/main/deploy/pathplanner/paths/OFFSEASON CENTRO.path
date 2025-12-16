@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "centroauto"
     }
   ],
   "rotationTargets": [],
@@ -33,13 +33,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "Wait2",
-      "waypointRelativePos": 0.5859115448504989,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "dropCoral",
+      "name": "DropCoral",
       "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null

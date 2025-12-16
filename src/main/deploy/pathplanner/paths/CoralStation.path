@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.115453767123288,
-        "y": 4.009974315068493
+        "x": 5.271065433317845,
+        "y": 3.9971363847583636
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.092123287671233,
-        "y": 7.586087328767124
+        "x": 6.247734953865789,
+        "y": 7.573249398456996
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "centroauto"
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "coralstation"
     }
   ],
   "rotationTargets": [],
@@ -48,7 +48,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -179.42706130231656
+    "rotation": 179.28923153170496
   },
   "useDefaultConstraints": true
 }
