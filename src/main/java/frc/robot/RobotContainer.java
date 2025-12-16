@@ -110,6 +110,7 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("Wait2", new SequentialCommandGroup(new WaitCommand(2.0)));
         NamedCommands.registerCommand("DropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
+        NamedCommands.registerCommand("Align",  new AlignToReefTagRelative(false, s_Swerve).withTimeout(4));
         // Configure the button bindings
         configureButtonBindings();
         autoChooser  = AutoBuilder.buildAutoChooser();

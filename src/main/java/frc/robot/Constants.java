@@ -95,9 +95,10 @@ public final class Constants {
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 10;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(77.60736); //61.171875   OFFSET REPORTED: -0.215576 ROTATIONS
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees( 100.458984375); //61.171875  104.23836
+            public static final Rotation2d cancoderOffset = Rotation2d.fromRotations(0.293);
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset, cancoderOffset);
         }
 
         /* Front Right Module - Module 1  Checked*/
@@ -105,9 +106,10 @@ public final class Constants {
             public static final int driveMotorID = 4;
             public static final int angleMotorID = 1;
             public static final int canCoderID = 12;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(151.875); //-25.429688 OFFSET REPORTED: 0.421875
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees( -32.51953125 ); //-25.429688  -27.68544
+            public static final Rotation2d cancoderOffset = Rotation2d.fromRotations(-0.087);
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset, cancoderOffset);
         }
         
         /* Back Left Module - Module 2 */
@@ -115,9 +117,10 @@ public final class Constants {
             public static final int driveMotorID = 2; 
             public static final int angleMotorID = 6;
             public static final int canCoderID = 11;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(157.14828); //OFFSET REPOERTED: 0.436523
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(   -28.125);  // -17.22672 -23.5546875
+            public static final Rotation2d cancoderOffset = Rotation2d.fromRotations(-0.061);
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset, cancoderOffset);
         }
 
         /* Back Right Module - Module 3 */
@@ -125,9 +128,10 @@ public final class Constants {
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 3;
             public static final int canCoderID = 9;    
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(18.19332); //OFFSET REPORTED: 0.050537
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees( -164.70703125 ); //-162.949322
+            public static final Rotation2d cancoderOffset = Rotation2d.fromRotations(-0.451);
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset, cancoderOffset);
         }
         public static final PPHolonomicDriveController pathFollowerConfig = new PPHolonomicDriveController(
              new PIDConstants(3.5, 1, 1), 
@@ -157,45 +161,21 @@ public final class Constants {
         public static final double ROLLER_MOTOR_VOLTAGE_COMP = 10;
     }
 
-    public static final class PelotaConstants{
-        public static final int PELOTA_MOTOR_ID = 32;
-        public static final int PELOTA_MOTOR_CURRENT_LIMIT = 60; 
-        public static final double PELOTA_SPIN_VALUE = 0.5;
-        public static final double PELOTA_MOTOR_VOLTAGE_COMP = 10;
-    }
-
     public static final class ElevaotrConstants{
+        public static final int ELEVATOR_MASTER_MOTOR_ID = 30;
+        public static final int ELEVATOR_FOLLOW_MOTOR_ID = 28;
+        public static final double ELEVATOR_P  = 0.15;
+        public static final double ELEVATOR_I = 0.0;
+        public static final double ELEVATOR_D = 0.005;
+        public static final double ELEVATOR_MAX_ACCELLERATION = 5000;
+        public static final double ELEVATOR_MAX_VELO = 3000;
+        public static final double ELEVATOR_POSITION_TOLERANCE = 0.2;
+        public static final int ELEVATOR_CURRENT_LIMIT = 40;
+        public static final int ELEVATOR_ROLLER_RAIDUS = 1;
+        public static final int ELEVATOR_CONVERSION_FACTOR = 12;
+        public static final Boolean Elevator_INVERTED = true;
 
-
-public static final int ELEVATOR_MASTER_MOTOR_ID = 30;
-
-
-public static final int ELEVATOR_FOLLOW_MOTOR_ID = 28;
-
-
-public static final double ELEVATOR_P = 0.15;
-
-
- public static final double ELEVATOR_I = 0.0;
-
-
-public static final double ELEVATOR_D = 0.005;
-
-
-public static final double ELEVATOR_MAX_ACCELLERATION = 5000;
-
-
-public static final double ELEVATOR_MAX_VELO = 3000;
-
-
-public static final double ELEVATOR_POSITION_TOLERANCE = 0.2;
-public static final int ELEVATOR_CURRENT_LIMIT = 40;
-public static final int ELEVATOR_ROLLER_RAIDUS = 1;
-public static final int ELEVATOR_CONVERSION_FACTOR = 12;
-public static final Boolean Elevator_INVERTED = true;
-}
-
-
+    }
     public static final class BrazoConstants{
         public static final int BRAZO_MOTOR_ID =25;
         public static final int BRAZO_MOTOR_CURRENT_LIMIT = 60; 
@@ -203,4 +183,20 @@ public static final Boolean Elevator_INVERTED = true;
         public static final double BRAZO_RISE_VALUE = 0.25;
         public static final double BRAZO_MOTOR_VOLTAGE_COMP = 10;
     }
+    public static final class AlignConstants{
+        public static final double ROT_REEF_ALIGNMENT_P = 0.058;
+        public static final double X_REEF_ALIGNMENT_P = 3.3;
+        public static final double Y_REEF_ALIGNMENT_P = 3.3;
+
+        public static final double ROT_SETPOINT_REEF_ALIGNMENT = 0.06;
+        public static final double X_SETPOINT_REEF_ALIGNMENT = -0.05;
+        public static final double Y_SETPOINT_REEF_ALIGNMENT = -0.69;
+
+        public static final double ROT_TOLERANCE_REEF_ALIGNMENT = 1;
+        public static final double X_TOLERANCE_REEF_ALIGNMENT = 0.02;
+        public static final double Y_TOLERANCE_REEF_ALIGNMENT = 0.02;
+        public static final double DONT_SEE_TAG_WAIT_TIME = 1;
+        public static final double POSE_VAIDATION_TIME = 0.03;
+    }
+    
 }

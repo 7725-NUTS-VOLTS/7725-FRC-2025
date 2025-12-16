@@ -2,6 +2,7 @@ package frc.robot;
 
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 
 public final class CTREConfigs {
     public TalonFXConfiguration swerveAngleFXConfig = new TalonFXConfiguration();
@@ -19,7 +20,11 @@ public final class CTREConfigs {
 
         /* Gear Ratio and Wrapping Config */
         swerveAngleFXConfig.Feedback.SensorToMechanismRatio = Constants.Swerve.angleGearRatio;
+        swerveAngleFXConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.RotorSensor;
         swerveAngleFXConfig.ClosedLoopGeneral.ContinuousWrap = true;
+        // swerveAngleFXConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANcoder;
+        // swerveAngleFXConfig.Feedback.FeedbackRemoteSensorID = FeedbackSensorSourceValue.RemoteCANcoder;
+
         
         /* Current Limiting */
         swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable = Constants.Swerve.angleEnableCurrentLimit;

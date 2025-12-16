@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.Swerve;
+import frc.robot.Constants.AlignConstants;;
 
 
 public class AlignToReefTagRelative extends Command {
@@ -17,9 +18,9 @@ public class AlignToReefTagRelative extends Command {
     private double tagID =-1;
 
     public AlignToReefTagRelative(boolean isRightScore, Swerve drivebase){
-        xController = new PIDController(0, 0, 0); //AGREGAR CONSTANTES
-        yController = new PIDController(0, 0, 0); //AGREGAR CONSTANTES
-        rotController = new PIDController(0, 0, 0); //AGREGAR CONSTANTES
+        xController = new PIDController(Constants.AlignConstants.X_REEF_ALIGNMENT_P, 0, 0); 
+        yController = new PIDController(Constants.AlignConstants.Y_REEF_ALIGNMENT_P, 0, 0); 
+        rotController = new PIDController(Constants.AlignConstants.ROT_REEF_ALIGNMENT_P, 0, 0); 
 
         this.isRightScore = isRightScore;
         this.drivebase = drivebase;
@@ -34,14 +35,14 @@ public class AlignToReefTagRelative extends Command {
         this.dontSeeTagTimer = new Timer();
         this.dontSeeTagTimer.start();
 
-        rotController.setSetpoint(0); //AGREGAR CONSTANTES
-        rotController.setTolerance(0); //AGREGAR CONSTANTES
+        rotController.setSetpoint(Constants.AlignConstants.ROT_SETPOINT_REEF_ALIGNMENT); 
+        rotController.setTolerance(Constants.AlignConstants.ROT_TOLERANCE_REEF_ALIGNMENT); 
 
-        xController.setSetpoint(0); //AGREGAR CONSTANTES
-        xController.setTolerance(0); //AGREGAR CONSTANTES
+        xController.setSetpoint(Constants.AlignConstants.X_SETPOINT_REEF_ALIGNMENT); 
+        xController.setTolerance(Constants.AlignConstants.X_TOLERANCE_REEF_ALIGNMENT); 
 
-        yController.setSetpoint(isRightScore ? 0 : 0); //AGREGAR CONSTANTES
-        yController.setTolerance(0); //AGREGAR CONSTANTES
+        yController.setSetpoint(isRightScore ? Constants.AlignConstants.Y_SETPOINT_REEF_ALIGNMENT : -Constants.AlignConstants.Y_SETPOINT_REEF_ALIGNMENT); 
+        yController.setTolerance(Constants.AlignConstants.Y_TOLERANCE_REEF_ALIGNMENT); 
 
         tagID = LimelightHelpers.getFiducialID("");
     }
@@ -81,8 +82,8 @@ public class AlignToReefTagRelative extends Command {
 
         @Override
         public boolean isFinished(){
-            return this.dontSeeTagTimer.hasElapsed(0) || //AGREGAR CONSTANTES
-                stopTimer.hasElapsed(0); //AGREGAR CONSTANTES
+            return this.dontSeeTagTimer.hasElapsed(Constants.AlignConstants.DONT_SEE_TAG_WAIT_TIME) || 
+                stopTimer.hasElapsed(Constants.AlignConstants.POSE_VAIDATION_TIME); 
         }
     
     
