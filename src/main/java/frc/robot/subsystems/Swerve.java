@@ -26,8 +26,13 @@ public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
-    private RobotConfig config;    
-        public Swerve() {
+
+    private RobotConfig config;
+
+    private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(Constants.Swerve.swerveKinematics);
+
+    public Swerve() {
+
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
         gyro.getConfigurator().apply(new Pigeon2Configuration());
         gyro.setYaw(0);
