@@ -15,6 +15,12 @@
           "data": {
             "name": "DropCoral"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Align"
+          }
         }
       ]
     }

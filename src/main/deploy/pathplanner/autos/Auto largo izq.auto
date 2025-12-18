@@ -17,6 +17,12 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "Align"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "DropCoral"
                 }
               },
@@ -36,6 +42,12 @@
                 "type": "path",
                 "data": {
                   "pathName": "feeder a izq"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Align"
                 }
               },
               {

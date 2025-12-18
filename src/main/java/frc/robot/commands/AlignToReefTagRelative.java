@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.Swerve;
-import frc.robot.Constants.AlignConstants;;
+import frc.robot.Constants.AlignConstants;
 
 
 public class AlignToReefTagRelative extends Command {
@@ -53,12 +53,15 @@ public class AlignToReefTagRelative extends Command {
             this.dontSeeTagTimer.reset();
 
             double[] positions = LimelightHelpers.getBotPose_TargetSpace("");
+
             SmartDashboard.putNumber("x", positions[2]);
 
             double xSpeed = xController.calculate(positions[2]);
-            SmartDashboard.putNumber("xspee", xSpeed);
+            SmartDashboard.putNumber("xspeed", xSpeed);
             double ySpeed = -yController.calculate(positions[0]);
             double rotValue = -rotController.calculate(positions[4]);
+
+        
 
             drivebase.drive(new Translation2d(xSpeed, ySpeed), rotValue, false, false);
 
@@ -68,11 +71,18 @@ public class AlignToReefTagRelative extends Command {
 
             stopTimer.reset();
             }else{
-                drivebase.drive(new Translation2d(), 0, false, false);
+                drivebase.drive(new Translation2d(xSpeed*0.7, ySpeed *0.7), rotValue*0.7, false, false);
+            }
+
+            if(!LimelightHelpers.getTV("")){
+                if(dontSeeTagTimer.get()>0.2){
+                    drivebase.drive(new Translation2d(0,0), 0.4, false, false);
+                }
             }
 
             SmartDashboard.putNumber("poseValidTimer", stopTimer.get());
         }
+
     }
         @Override
         public void end(boolean interrupted){

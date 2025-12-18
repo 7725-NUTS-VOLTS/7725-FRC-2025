@@ -7,19 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "izquierdo"
+            "pathName": "test elev"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "DropCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Align"
+            "name": "DropElev"
           }
         }
       ]

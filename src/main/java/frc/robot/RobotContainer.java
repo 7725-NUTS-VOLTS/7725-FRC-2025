@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -30,13 +31,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
     /* Controllers */
-    private final Joystick driver = new Joystick(0);
+    public Joystick driver = new Joystick(0);
     private final Joystick opperator = new Joystick(1);
 
     /* Drive Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
     private final int strafeAxis = XboxController.Axis.kLeftX.value;
     private final int rotationAxis = XboxController.Axis.kRightX.value;
+   
     //private final int speedAxis = XboxController.Axis.kRightTrigger.value;
 
     /* Driver Buttons */
@@ -48,6 +50,9 @@ public class RobotContainer {
         new JoystickButton(driver, XboxController.Button.kB.value);
     private final JoystickButton resetWheels = 
         new JoystickButton(driver, XboxController.Button.kA.value);
+
+    private final JoystickButton AprilTagFollowe = 
+        new JoystickButton(driver, XboxController.Button.kY.value);
 
     /*Opperator buttons */
     
@@ -110,11 +115,14 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("Wait2", new SequentialCommandGroup(new WaitCommand(2.0)));
         NamedCommands.registerCommand("DropCoral", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(2));
-        NamedCommands.registerCommand("Align",  new AlignToReefTagRelative(false, s_Swerve).withTimeout(4));
+        NamedCommands.registerCommand("DropElev", new EscupidorCommand(()-> EscupidorConstants.ROLLER_EJECT_VALUE, ()-> -1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem).withTimeout(.7));
+        NamedCommands.registerCommand("Align",  new AlignToReefTagRelative(false, s_Swerve));
         // Configure the button bindings
         configureButtonBindings();
         autoChooser  = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Mode", autoChooser);
+
+       
     }
 
     /**
@@ -127,6 +135,7 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro1.and(zeroGyro2).onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         resetWheels.onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
+        AprilTagFollowe.whileTrue(new AlignToReefTagRelative(false, s_Swerve));
         /* Operator Buttons */
         ejectCoral.whileTrue(new EscupidorCommand(()->EscupidorConstants.ROLLER_EJECT_VALUE, ()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem)); 
         retractCoral.whileTrue(new EscupidorCommand(()->-1*EscupidorConstants.ROLLER_EJECT_VALUE, ()->EscupidorConstants.ROLLER_EJECT_VALUE, escupidorSubSystem));
